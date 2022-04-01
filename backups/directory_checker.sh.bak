@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#Print the current working Directory
+
+DIRECTORY=$(pwd)
+
+echo "The current working directory is : ${DIRECTORY}."
+
+#Default is Today's Date
+
+DATE=$(date +"%G-%m-%e")
+
+#Get the user input
+echo -n "Enter the date to check for : "
+read date
+
+if [[ -z "${date}" ]]
+then
+	FINAL_DATE=${DATE}
+else
+	FINAL_DATE=${date}
+fi
+
+echo "Today Date is ${DATE} and Final date is ${FINAL_DATE}"
+
+#Get the list of directories in the current working directory.
+
+DIRECTORY_LIST=$(ls -d */)
+
+#Colour Declaration
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+#Iterate through the DIRECTORY_LIST and check for the condition
+
+for folder in ${DIRECTORY_LIST}
+do
+	if [[ ! -d "${DIRECTORY}/${folder}/${FINAL_DATE}/" ]]
+	then
+		echo -e "${RED}${FINAL_DATE}${NC} directory does not exist in ${RED}${folder}"
+	fi
+done
