@@ -1,0 +1,37 @@
+.
+├── ABC
+│   └── 2022-03-25
+│       ├── mysql-2022-03-25.tar.gz
+│       └── script-2022-03-25.tar.gz
+├── angel
+├── backups
+│   ├── direc.sh
+│   ├── directory_checker.sh.bak
+│   ├── directory_checker.sh.bak2
+│   ├── directory_checker.sh.bak3
+│   ├── directory_checker.sh.bak4
+│   └── directory_checker.sh.final_bak
+├── devil
+├── directory_checker.sh
+├── facebook
+├── google
+├── hello
+│   └── 2022-03-25
+│       ├── mysql-2022-03-25.tar.gz
+│       └── script-2022-03-25.tar.gz
+├── inactive_list.txt
+├── mani
+├── netflix
+├── radha
+│   └── 2022-03-25
+│       └── script-2022-03-25.tar.gz
+├── tamila
+│   └── 2022-03-25
+│       └── mysql-2022-03-25.tar.gz
+├── tcs
+├── tree.txt
+├── wipro
+└── world
+    └── 2022-03-25
+
+19 directories, 15 files
