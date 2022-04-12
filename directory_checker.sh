@@ -8,9 +8,14 @@ then
 	exit 1
 fi
 
-#Print the current working Directory
+#Print the working Directory
+#Enter the working directory here
 
-DIRECTORY=$(pwd)
+#####
+###Remember "not" to put a forward slash at the end !!! 
+#####
+
+DIRECTORY="/home/tamila/Projects/Directory_Checker"
 
 echo "The current working directory is : ${DIRECTORY}."
 
