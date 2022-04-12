@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#Check if root is running the script
+USER=$(whoami)
+if [[ "${USER}" == "root" ]]
+then
+	echo "Root is not supposed to run this script !!!"
+	exit 1
+fi
+
 #Print the current working Directory
 
 DIRECTORY=$(pwd)
