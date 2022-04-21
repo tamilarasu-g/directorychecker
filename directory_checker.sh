@@ -36,9 +36,9 @@ fi
 
 #echo "Today Date is ${DATE} and Final date is ${FINAL_DATE}"
 
-#Get the list of directories in the current working directory.
+#Change to that Directory and Get the list of directories in the current working directory.
 
-DIRECTORY_LIST=$(ls -d */)
+DIRECTORY_LIST=$(cd "${DIRECTORY}"; ls -d */)
 INACTIVE=`cat ./inactive_list.txt`
 
 #Colour Declaration
