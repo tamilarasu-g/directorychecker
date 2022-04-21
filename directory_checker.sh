@@ -8,6 +8,25 @@ then
 	exit 1
 fi
 
+#Check for presence of any previously generated log files in current directory
+#If present then inform the user.
+LOG_FILE=$(ls | grep *.log)
+LOG_FILE_STATUS=${?}
+ERROR_FILE=$(ls | grep *.err)
+ERROR_FILE_STATUS=${?}
+
+if [[ "${LOG_FILE_STATUS}" -eq 0 ]]
+	then
+		echo "${LOG_FILE} is present in the current Directory which may conflict during running the script"
+		echo "We advise you to remove ${LOG_FILE} or move it to somewhere else before you proceed."
+		exit 1
+elif [[ "${ERROR_FILE_STATUS}" -eq 0 ]]
+	then
+		echo "${ERROR_FILE} is present in the current Directory which may conflict during running the script"
+		echo "We advise you to remove ${ERROR_FILE} or move it to somewhere else before you proceed."
+		exit 1
+fi
+
 #Print the working Directory
 #Enter the working directory here
 
