@@ -27,6 +27,15 @@ elif [[ "${ERROR_FILE_STATUS}" -eq 0 ]]
 		exit 1
 fi
 
+#Check if inactive_list.txt is present or not
+if [[ -f "inactive_list.txt" ]]
+then
+	INACTIVE=`cat ./inactive_list.txt`
+else
+	echo "inactive_list.txt is NOT FOUND in the current Directory"
+	exit 1
+fi
+
 #Print the working Directory
 #Enter the working directory here
 
@@ -58,7 +67,6 @@ fi
 #Change to that Directory and Get the list of directories in the current working directory.
 
 DIRECTORY_LIST=$(cd "${DIRECTORY}"; ls -d */)
-INACTIVE=`cat ./inactive_list.txt`
 
 #Colour Declaration
 
