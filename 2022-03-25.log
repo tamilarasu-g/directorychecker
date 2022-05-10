@@ -1,0 +1,9 @@
+-----------------Directory Report------------------------
+[0;31m2022-03-25[0m directory does not exist in [0;31mbackups/[0m
+[0;31m2022-03-25[0m directory does not exist in [0;31mmani/[0m
+-----------------Both Files Missing Report---------------
+[0;31mBoth Files do not exist in world/[0m !!!
+-----------------Script Report---------------------------
+[0;32mscript-2022-03-25.tar.gz[0m does not exist in [0;32mtamila/[0m
+-----------------Database Report-------------------------
+[0;32mmysql-2022-03-25.tar.gz[0m does not exist in [0;32mradha/[0m
