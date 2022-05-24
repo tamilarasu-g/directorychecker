@@ -137,6 +137,12 @@ done < inactive_list.txt
 #Remove the extra lines from the final file
 sed -i '/^$/d' "${FINAL_DATE}.log"
 
+# Replace the words that are hostname with their full names
+while IFS="," read -r hostname full_name
+do
+    sed -i "s|$hostname|$full_name|g" ${FINAL_DATE}.log
+done < client.csv
+
 #Check if the above command run succesfully and report
 
 if [[ "${#}" -eq 0 ]]
