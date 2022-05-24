@@ -68,14 +68,6 @@ fi
 
 DIRECTORY_LIST=$(cd "${DIRECTORY}"; ls -d */)
 
-#Colour Declaration
-
-RED='\033[0;31m'
-NC='\033[0m'
-GREEN='\033[0;32m'
-#BOLD=$(tput bold)
-#NORMAL=$(tput sgr0)
-
 #Create a file named with today's date.log
 touch "${FINAL_DATE}.log"
 
@@ -91,13 +83,13 @@ do
 	if [[ ! -d "${DIRECTORY}/${folder}/${FINAL_DATE}/" ]] #Check if Directory exists
 	then
 		#If does not exists then send the report to a file.
-		echo -e "${RED}${FINAL_DATE}${NC} directory does not exist in ${RED}${folder}${NC}" >> "${FINAL_DATE}.folder"
+		echo -e "${FINAL_DATE} directory does not exist in ${folder}" >> "${FINAL_DATE}.folder"
 	        echo ""	>> "${FINAL_DATE}.folder"
 	else
 		if [[ ! -f "${DIRECTORY}/${folder}${FINAL_DATE}/script-${FINAL_DATE}.tar.gz" &&\
 		       	! -f "${DIRECTORY}/${folder}${FINAL_DATE}/mysql-${FINAL_DATE}.tar.gz" ]]
 		then
-		echo -e "${RED}Both Files do not exist in ${folder}${NC} !!!" >> "${FINAL_DATE}.both"
+		echo -e "Both Files do not exist in ${folder} !!!" >> "${FINAL_DATE}.both"
 		echo "" >> "${FINAL_DATE}.both"
 
 		else	
@@ -106,7 +98,7 @@ do
 
 			if [[ ! -f "${DIRECTORY}/${folder}${FINAL_DATE}/script-${FINAL_DATE}.tar.gz" ]]
 			then
-				echo -e "${GREEN}script-${FINAL_DATE}.tar.gz${NC} does not exist in ${GREEN}${folder}${NC}"\
+				echo -e "script-${FINAL_DATE}.tar.gz does not exist in ${folder}"\
 			       		>> "${FINAL_DATE}.file1"
 				echo "" >> "${FINAL_DATE}.file1"
 			fi
@@ -115,7 +107,7 @@ do
 		#If not then report to a file
 			if [[ ! -f "${DIRECTORY}/${folder}${FINAL_DATE}/mysql-${FINAL_DATE}.tar.gz" ]]
 			then
-				echo -e "${GREEN}mysql-${FINAL_DATE}.tar.gz${NC} does not exist in ${GREEN}${folder}${NC}"\
+				echo -e "mysql-${FINAL_DATE}.tar.gz does not exist in ${folder}"\
 			       		>> "${FINAL_DATE}.file2"
 				echo "" >> "${FINAL_DATE}.file2"
 			fi
@@ -143,11 +135,36 @@ do
     sed -i "s|$hostname|$full_name|g" ${FINAL_DATE}.log
 done < client.csv
 
+#Send mail
+sender="tamilaguru08150@gmail.com"
+receiver="tamilaguru08150@gmail.com"
+gapp="blehgellsutobfhh"
+sub="Test mail from bash script"
+body=$(cat ${FINAL_DATE}.log)
+
+curl -s --url 'smtps://smtp.gmail.com:465' --ssl-reqd \
+    --mail-from $sender \
+    --mail-rcpt $receiver\
+    --user $sender:$gapp \
+    -T <(echo -e "From: ${sender}
+To: ${receiver}
+Subject:${sub}
+
+${body}")
+
+# Check if the mail is sent successfully
+if [[ "${?}" -eq 0 ]]
+then
+    echo "Mail is sent successfully !!!!"
+else
+    echo "Mail has not been sent due to an error !!!"
+fi
+
 #Check if the above command run succesfully and report
 
-if [[ "${#}" -eq 0 ]]
-then
-	echo -e "${GREEN}The Script has been executed succesfully and the report is placed in the current Directory and been named as ${FINAL_DATE}.log and error report is named as ${FINAL_DATE}.err${NC}"
-fi
+# if [[ "${#}" -eq 0 ]]
+# then
+# 	echo -e "The Script has been executed succesfully and the report is placed in the current Directory and been named as ${FINAL_DATE}.log and error report is named as ${FINAL_DATE}.err"
+# fi
 
 rm "${FINAL_DATE}.folder" "${FINAL_DATE}.file1" "${FINAL_DATE}.file2" "${FINAL_DATE}.both"
