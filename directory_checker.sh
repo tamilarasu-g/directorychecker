@@ -128,14 +128,14 @@ done
 cat "${FINAL_DATE}.folder" "${FINAL_DATE}.both" "${FINAL_DATE}.file1" "${FINAL_DATE}.file2" >> "${FINAL_DATE}.log"\
        	2>"${FINAL_DATE}.err"
 
-while read i
-do 
-	LINE_NUMBER=$(grep -n "${i}" "${FINAL_DATE}".log | cut -d : -f 1)
-	sed -i "${LINE_NUMBER}d" "${FINAL_DATE}".log
-done < inactive_list.txt
+# while read i
+# do 
+# 	LINE_NUMBER=$(grep -n "${i}" "${FINAL_DATE}".log | cut -d : -f 1)
+# 	sed -i "${LINE_NUMBER}d" "${FINAL_DATE}".log
+# done < inactive_list.txt
 
-#Remove the extra lines from the final file
-sed -i '/^$/d' "${FINAL_DATE}.log"
+# #Remove the extra lines from the final file
+# sed -i '/^$/d' "${FINAL_DATE}.log"
 
 #Check if the above command run succesfully and report
 
