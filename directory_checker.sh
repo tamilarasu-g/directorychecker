@@ -43,7 +43,7 @@ fi
 ###Remember "not" to put a forward slash at the end !!! 
 #####
 
-DIRECTORY="/home/tamila/Projects/Directory_Checker"
+DIRECTORY="$HOME/Projects/Directory_Checker"
 
 echo "The current working directory is : ${DIRECTORY}."
 
